@@ -1,14 +1,13 @@
 <?php
 if (isset($_POST['Submit'])) {
-    $id = $_POST['id'];
     $kode = $_POST['kode'];
     $nama = $_POST['nama'];
     $sks = $_POST['sks'];
     $semester = $_POST['semester'];
 
-    $result = mysqli_query($con, "INSERT INTO mahasiswa(id,kode,nama,sks,semester)
-VALUES('$id','$kode','$nama','$sks','$semester')");
-    header("Location:?page=mahasiswa-show");
+    $result = mysqli_query($con, "INSERT INTO matakuliah(kode,nama,sks,semester)
+VALUES('$kode','$nama','$sks','$semester')");
+    header("Location:?page=matakuliah-show");
 }
 ?>
 <div class="row">
@@ -18,35 +17,23 @@ VALUES('$id','$kode','$nama','$sks','$semester')");
                 <strong>Tambah Data Mata Kuliah</strong>
             </div>
             <div class="card-body">
-                <form method="POST" action="?page=mahasiswa-add" class="form-horizontal">
+                <form method="POST" action="?page=matakuliah-add" class="form-horizontal">
                     <div class="form-group">
-                        <label for="nim" class="control-label">NIM</label>
-                        <input type="text" class="form-control" name="nim" placeholder="Masukan NIM..." required>
+                        <label for="kode" class="control-label">Kode</label>
+                        <input type="text" class="form-control" name="kode" placeholder="Masukan Kode..." required>
                     </div>
                     <div class="form-group">
-                        <label for="nama" class="ontrol-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Lengkap..." required>
+                        <label for="nama" class="ontrol-label">Nama</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama..." required>
                     </div>
                     <div class="form-group">
-                        <label for="nama" class="control-label">Jenis Kelamin</label>
-                        <select class="form-control" name="jenis_kelamin">
-                            <option disabled selected> Pilih </option>
-                            <option value="Pria">Pria</option>
-                            <option value="Wanita">Wanita</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat" class="control-label">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat..." required>
+                        <label for="sks" class="control-label">SKS</label>
+                        <input type="text" class="form-control" name="sks" placeholder="Masukan SKS..." required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="email" class="control-label">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Masukan email..." required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="telepon" class="control-label">Telepon</label>
-                            <input type="number" class="form-control" name="telepon" placeholder="Masukan telepon..." required>
+                            <label for="semester" class="control-label">Semester</label>
+                            <input type="text" class="form-control" name="semester" placeholder="Masukan Semester..." required>
                         </div>
                     </div>
                     <input type="submit" name="Submit" class="btn btn-primary" value="Simpan">
